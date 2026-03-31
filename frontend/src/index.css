@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px; /* Sets the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6b46c1; /* Purple color for the thumb */
+  border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2d3748; /* Dark background for the track */
+}
+
+.sia-logo {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(145deg, #3b0764, #6d28d9);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sia-logo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+}
+
+.sia-logo span {
+  position: absolute;
+  font-size: 28px;
+  color: white;
+  mix-blend-mode: lighten;
+  transition: all 0.3s ease;
+}
+
+.sia-logo .s {
+  left: 10px;
+  top: 14px;
+  color: #c084fc;
+  transform: rotate(-10deg);
+}
+
+.sia-logo .i {
+  left: 24px;
+  top: 10px;
+  color: #f0abfc;
+  transform: rotate(5deg);
+}
+
+.sia-logo .a {
+  left: 34px;
+  top: 16px;
+  color: #e879f9;
+  transform: rotate(10deg);
+}
+
