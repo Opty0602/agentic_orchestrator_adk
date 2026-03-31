@@ -37,3 +37,7 @@ GOOGLE_CLOUD_LOCATION="<location>"
 *NOTE*- This file should be placed along with agent.py file, even in sub agents. Also it is needed to setup the client which calls the llm, present in SharedResouces/load_environment.py
 *   **Installation:** Used google-adk and adhered to standard folder structure as per google ADK's document
 
+**Frontend tech Stack**: React + tailwindcss + Vite
+**Backend Tech Stack**: FastAPI + Uvicorn + google-adk
+
+*Inspired by the work which solely i did and learned in my company.*
