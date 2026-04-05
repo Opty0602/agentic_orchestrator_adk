@@ -1,88 +1,159 @@
 [
   {
-    "table_name": "Customer",
-    "table_description": "Stores each client’s or customer's details and risk profile i.e its tolerance for market volatility (conservative, balanced, aggressive). PK: customer_id. Referenced by Portfolio, InvestmentGoal, Proposal.",
-    "create_statement": "CREATE TABLE Customer (customer_id STRING NOT NULL, name STRING, email STRING, phone STRING, risk_profile STRING);",
+    "table_name": "customers",
+    "table_description": "Contains customer (user, client, account holder) profile details such as name, email, phone, and geographic information. Used to answer queries related to customer details, user profiles, premium users, and customer demographics. Each customer is uniquely identified by customer_id. This table is commonly joined with orders, subscriptions, support_tickets, and reviews using customer_id. Frequently filtered using country, city, created_at, and is_premium status.",
+    "create_statement": "CREATE TABLE customers (customer_id STRING, name STRING, email STRING, phone STRING, created_at TIMESTAMP, country STRING, city STRING, is_premium BOOL);",
     "columns": [
-      { "name": "customer_id",   "data_type": "STRING" },
-      { "name": "name",          "data_type": "STRING" },
-      { "name": "email",         "data_type": "STRING" },
-      { "name": "phone",         "data_type": "STRING" },
-      { "name": "risk_profile",  "data_type": "STRING" }
+      {"name": "customer_id", "type": "STRING", "description": "Unique identifier for each customer (Primary Key)"},
+      {"name": "name", "type": "STRING", "description": "Full name of the customer"},
+      {"name": "email", "type": "STRING", "description": "Email address used for communication and login"},
+      {"name": "phone", "type": "STRING", "description": "Contact phone number"},
+      {"name": "created_at", "type": "TIMESTAMP", "description": "Timestamp when the customer account was created"},
+      {"name": "country", "type": "STRING", "description": "Country of residence"},
+      {"name": "city", "type": "STRING", "description": "City of residence"},
+      {"name": "is_premium", "type": "BOOL", "description": "Indicates whether the customer is a premium subscriber"}
     ]
   },
   {
-    "table_name": "Portfolio",
-    "table_description": "Snapshot of a customer’s or client's investment portfolio where . PK: portfolio_id. FK: customer_id → Customer. Contains market value and gain/loss and year-to-date and return percentages. ",
-    "create_statement": "CREATE TABLE Portfolio (portfolio_id STRING NOT NULL,customer_id STRING,current_value FLOAT64,valuation_date DATE,total_return_pct FLOAT64,ytd_return_pct FLOAT64);",
+    "table_name": "orders",
+    "table_description": "Stores purchase order (transaction, sale) information made by customers. Used for queries involving order history, purchases, sales trends, and revenue analysis. Each order is uniquely identified by order_id and linked to customers using customer_id. Frequently joined with order_items, payments, shipments, and returns. Common filters include order_date, order_status, and total_amount.",
+    "create_statement": "CREATE TABLE orders (order_id STRING, customer_id STRING, order_date TIMESTAMP, order_status STRING, total_amount FLOAT64);",
     "columns": [
-      { "name": "portfolio_id",     "data_type": "STRING" },
-      { "name": "customer_id",      "data_type": "STRING" },
-      { "name": "current_value",    "data_type": "FLOAT64" },
-      { "name": "valuation_date",   "data_type": "DATE" },
-      { "name": "total_return_pct", "data_type": "FLOAT64" },
-      { "name": "ytd_return_pct",   "data_type": "FLOAT64" }
+      {"name": "order_id", "type": "STRING", "description": "Unique identifier for each order (Primary Key)"},
+      {"name": "customer_id", "type": "STRING", "description": "Reference to the customer placing the order"},
+      {"name": "order_date", "type": "TIMESTAMP", "description": "Date and time when the order was placed"},
+      {"name": "order_status", "type": "STRING", "description": "Current status of the order (e.g., shipped, delivered, cancelled)"},
+      {"name": "total_amount", "type": "FLOAT64", "description": "Total monetary value of the order"}
     ]
   },
   {
-    "table_name": "InvestmentGoal",
-    "table_description": "Defines customer's financial or investment objectives. PK: goal_id. FK: customer_id → Customer. Includes goal type(eg. education, retirement) , target amount (monetary objective), and time horizon ( i.e years to goal).",
-    "create_statement": "CREATE TABLE InvestmentGoal (goal_id STRING NOT NULL,customer_id STRING,goal_type STRING,target_amount FLOAT64,years_to_goal INT64);",
+    "table_name": "order_items",
+    "table_description": "Represents individual items (products) within each order. Used for queries involving product-level sales, quantities sold, and itemized order breakdowns. Each row links an order to a product using order_id and product_id. Frequently joined with orders and products. Important for calculating revenue and product performance metrics.",
+    "create_statement": "CREATE TABLE order_items (order_item_id STRING, order_id STRING, product_id STRING, quantity INT64, price_per_unit FLOAT64);",
     "columns": [
-      { "name": "goal_id",        "data_type": "STRING" },
-      { "name": "customer_id",    "data_type": "STRING" },
-      { "name": "goal_type",      "data_type": "STRING" },
-      { "name": "target_amount",  "data_type": "FLOAT64" },
-      { "name": "years_to_goal",  "data_type": "INT64" }
+      {"name": "order_item_id", "type": "STRING", "description": "Unique identifier for each order item"},
+      {"name": "order_id", "type": "STRING", "description": "Reference to the associated order"},
+      {"name": "product_id", "type": "STRING", "description": "Reference to the purchased product"},
+      {"name": "quantity", "type": "INT64", "description": "Number of units purchased"},
+      {"name": "price_per_unit", "type": "FLOAT64", "description": "Price of a single unit at purchase time"}
     ]
   },
   {
-    "table_name": "FinancialAdvisor",
-    "table_description": "Catalog of speacialized advisors available. PK: advisor_id. Lists contact info and area of expertise.",
-    "create_statement": "CREATE TABLE FinancialAdvisor (advisor_id STRING NOT NULL,name STRING,email STRING,phone STRING,specialization STRING);",
+    "table_name": "products",
+    "table_description": "Contains product (item, goods) catalog details including name, pricing, and category. Used for queries related to product listings, pricing, and catalog management. Each product is uniquely identified by product_id and linked to categories. Frequently joined with order_items, reviews, and inventory.",
+    "create_statement": "CREATE TABLE products (product_id STRING, name STRING, category_id STRING, price FLOAT64, is_active BOOL);",
     "columns": [
-      { "name": "advisor_id",     "data_type": "STRING" },
-      { "name": "name",           "data_type": "STRING" },
-      { "name": "email",          "data_type": "STRING" },
-      { "name": "phone",          "data_type": "STRING" },
-      { "name": "specialization", "data_type": "STRING" }
+      {"name": "product_id", "type": "STRING", "description": "Unique identifier for each product"},
+      {"name": "name", "type": "STRING", "description": "Name of the product"},
+      {"name": "category_id", "type": "STRING", "description": "Reference to product category"},
+      {"name": "price", "type": "FLOAT64", "description": "Base price of the product"},
+      {"name": "is_active", "type": "BOOL", "description": "Indicates if the product is currently available"}
     ]
   },
   {
-    "table_name": "Proposal",
-    "table_description": "Investment proposals generated by advisor for clients/customer. PK: proposal_id. FK: customer_id → Customer, advisor_id → FinancialAdvisor. Tracks status, date, and summary.",
-    "create_statement": "CREATE TABLE Proposal (proposal_id STRING NOT NULL,customer_id STRING,advisor_id STRING,status STRING,proposed_on DATE,proposal_summary STRING);",
+    "table_name": "categories",
+    "table_description": "Stores product category hierarchy used to group similar products. Enables queries on product categorization and grouping. Each category has a unique category_id and may reference a parent category. Frequently joined with products.",
+    "create_statement": "CREATE TABLE categories (category_id STRING, category_name STRING, parent_category_id STRING);",
     "columns": [
-      { "name": "proposal_id",       "data_type": "STRING" },
-      { "name": "customer_id",       "data_type": "STRING" },
-      { "name": "advisor_id",        "data_type": "STRING" },
-      { "name": "status",            "data_type": "STRING" },
-      { "name": "proposed_on",       "data_type": "DATE" },
-      { "name": "proposal_summary",  "data_type": "STRING" }
+      {"name": "category_id", "type": "STRING", "description": "Unique identifier for category"},
+      {"name": "category_name", "type": "STRING", "description": "Name of the category"},
+      {"name": "parent_category_id", "type": "STRING", "description": "Reference to parent category (for hierarchy)"}
     ]
   },
   {
-    "table_name": "MeetingMinutes",
-    "table_description": "Notes from client‑advisor meetings tied to a proposal. PK: meeting_id. FK: proposal_id → Proposal. Records date and minutes text.",
-    "create_statement": "CREATE TABLE MeetingMinutes (meeting_id STRING NOT NULL,proposal_id STRING,meeting_date DATE,minutes STRING);",
+    "table_name": "payments",
+    "table_description": "Stores payment transaction details associated with orders. Used for financial queries such as successful payments, failed transactions, and revenue tracking. Each payment is linked to an order using order_id. Frequently filtered by payment_status, payment_method, and payment_date.",
+    "create_statement": "CREATE TABLE payments (payment_id STRING, order_id STRING, payment_method STRING, payment_status STRING, amount FLOAT64, payment_date TIMESTAMP);",
     "columns": [
-      { "name": "meeting_id",    "data_type": "STRING" },
-      { "name": "proposal_id",   "data_type": "STRING" },
-      { "name": "meeting_date",  "data_type": "DATE" },
-      { "name": "minutes",       "data_type": "STRING" }
+      {"name": "payment_id", "type": "STRING", "description": "Unique identifier for payment"},
+      {"name": "order_id", "type": "STRING", "description": "Reference to associated order"},
+      {"name": "payment_method", "type": "STRING", "description": "Method used for payment (card, UPI, etc.)"},
+      {"name": "payment_status", "type": "STRING", "description": "Status of payment (success, failed, pending)"},
+      {"name": "amount", "type": "FLOAT64", "description": "Amount paid"},
+      {"name": "payment_date", "type": "TIMESTAMP", "description": "Timestamp of payment"}
     ]
   },
   {
-    "table_name": "ProposalOrder",
-    "table_description": "Line items in proposals. PK: order_id. FK: proposal_id → Proposal. Lists product types, names, amounts, and units.",
-    "create_statement": "CREATE TABLE ProposalOrder (order_id STRING NOT NULL,proposal_id STRING,product_type STRING,product_name STRING,amount FLOAT64,units FLOAT64);",
+    "table_name": "shipments",
+    "table_description": "Tracks shipping and delivery details for orders. Used to analyze delivery performance, shipping delays, and logistics. Each shipment is linked to an order using order_id. Frequently filtered by shipment_status, carrier, and delivery dates.",
+    "create_statement": "CREATE TABLE shipments (shipment_id STRING, order_id STRING, shipment_status STRING, shipped_date TIMESTAMP, delivered_date TIMESTAMP, carrier STRING);",
     "columns": [
-      { "name": "order_id",      "data_type": "STRING" },
-      { "name": "proposal_id",   "data_type": "STRING" },
-      { "name": "product_type",  "data_type": "STRING" },
-      { "name": "product_name",  "data_type": "STRING" },
-      { "name": "amount",        "data_type": "FLOAT64" },
-      { "name": "units",         "data_type": "FLOAT64" }
+      {"name": "shipment_id", "type": "STRING", "description": "Unique shipment identifier"},
+      {"name": "order_id", "type": "STRING", "description": "Reference to associated order"},
+      {"name": "shipment_status", "type": "STRING", "description": "Status of shipment"},
+      {"name": "shipped_date", "type": "TIMESTAMP", "description": "Date when shipment was sent"},
+      {"name": "delivered_date", "type": "TIMESTAMP", "description": "Date when shipment was delivered"},
+      {"name": "carrier", "type": "STRING", "description": "Logistics provider"}
+    ]
+  },
+  {
+    "table_name": "reviews",
+    "table_description": "Stores customer feedback and product reviews including ratings and comments. Used to analyze customer satisfaction and product quality. Each review links a customer to a product. Frequently filtered by rating and product_id.",
+    "create_statement": "CREATE TABLE reviews (review_id STRING, product_id STRING, customer_id STRING, rating INT64, review_text STRING);",
+    "columns": [
+      {"name": "review_id", "type": "STRING", "description": "Unique identifier for review"},
+      {"name": "product_id", "type": "STRING", "description": "Reviewed product"},
+      {"name": "customer_id", "type": "STRING", "description": "Customer who wrote the review"},
+      {"name": "rating", "type": "INT64", "description": "Rating given (1-5)"},
+      {"name": "review_text", "type": "STRING", "description": "Textual review content"}
+    ]
+  },
+  {
+    "table_name": "subscriptions",
+    "table_description": "Tracks customer subscription details for recurring services. Used to analyze active users, churn, and subscription revenue. Linked to customers via customer_id and plans via plan_id.",
+    "create_statement": "CREATE TABLE subscriptions (subscription_id STRING, customer_id STRING, plan_id STRING, start_date TIMESTAMP, end_date TIMESTAMP, status STRING);",
+    "columns": [
+      {"name": "subscription_id", "type": "STRING", "description": "Unique subscription identifier"},
+      {"name": "customer_id", "type": "STRING", "description": "Subscribed customer"},
+      {"name": "plan_id", "type": "STRING", "description": "Subscribed plan"},
+      {"name": "start_date", "type": "TIMESTAMP", "description": "Subscription start"},
+      {"name": "end_date", "type": "TIMESTAMP", "description": "Subscription end"},
+      {"name": "status", "type": "STRING", "description": "Active, cancelled, expired"}
+    ]
+  },
+  {
+    "table_name": "subscription_plans",
+    "table_description": "Defines subscription plans including pricing and billing cycles. Used to understand subscription tiers and pricing models.",
+    "create_statement": "CREATE TABLE subscription_plans (plan_id STRING, plan_name STRING, monthly_cost FLOAT64, billing_cycle STRING);",
+    "columns": [
+      {"name": "plan_id", "type": "STRING", "description": "Unique plan identifier"},
+      {"name": "plan_name", "type": "STRING", "description": "Name of the plan"},
+      {"name": "monthly_cost", "type": "FLOAT64", "description": "Monthly subscription cost"},
+      {"name": "billing_cycle", "type": "STRING", "description": "Monthly, yearly, etc."}
+    ]
+  },
+  {
+    "table_name": "support_tickets",
+    "table_description": "Stores customer support issues and complaints. Used to track customer issues, resolution time, and service quality. Linked to customers and optionally to orders.",
+    "create_statement": "CREATE TABLE support_tickets (ticket_id STRING, customer_id STRING, order_id STRING, issue_type STRING, status STRING, created_at TIMESTAMP);",
+    "columns": [
+      {"name": "ticket_id", "type": "STRING", "description": "Unique ticket ID"},
+      {"name": "customer_id", "type": "STRING", "description": "Customer raising issue"},
+      {"name": "order_id", "type": "STRING", "description": "Related order (if any)"},
+      {"name": "issue_type", "type": "STRING", "description": "Type of issue"},
+      {"name": "status", "type": "STRING", "description": "Open, resolved, pending"},
+      {"name": "created_at", "type": "TIMESTAMP", "description": "Ticket creation time"}
+    ]
+  },
+  {
+    "table_name": "warehouses",
+    "table_description": "Stores warehouse locations and capacities used for inventory storage. Helps in logistics and stock distribution queries.",
+    "create_statement": "CREATE TABLE warehouses (warehouse_id STRING, location STRING, capacity INT64);",
+    "columns": [
+      {"name": "warehouse_id", "type": "STRING", "description": "Unique warehouse ID"},
+      {"name": "location", "type": "STRING", "description": "Warehouse location"},
+      {"name": "capacity", "type": "INT64", "description": "Maximum storage capacity"}
+    ]
+  },
+  {
+    "table_name": "inventory",
+    "table_description": "Tracks stock levels of products across warehouses. Used for inventory management, stock availability, and supply chain analysis. Links products and warehouses.",
+    "create_statement": "CREATE TABLE inventory (inventory_id STRING, product_id STRING, warehouse_id STRING, stock_quantity INT64);",
+    "columns": [
+      {"name": "inventory_id", "type": "STRING", "description": "Unique inventory record"},
+      {"name": "product_id", "type": "STRING", "description": "Product stored"},
+      {"name": "warehouse_id", "type": "STRING", "description": "Warehouse storing product"},
+      {"name": "stock_quantity", "type": "INT64", "description": "Available stock"}
     ]
   }
 ]

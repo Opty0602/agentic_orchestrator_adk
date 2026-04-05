@@ -9,15 +9,16 @@ import re
 #Gemini client setup
 
 client = get_client()
-
-def smallm_query_preparer(retreiver_result):
+from chromadb.api.types import QueryResult
+def smallm_query_preparer(retreiver_result:QueryResult):
     """ Prepares the prompt to be fed to smallm """
 
     query = ""
     for i, table_name in enumerate(retreiver_result['ids'][0]):
         name = "Table name: "+table_name
         description = retreiver_result['documents'][0][i]
-        query = query + name + '\n' + description + '\n'
+        meta_data = retreiver_result["metadatas"][0][i].get("columns","Column displaying failed")
+        query = query + name + '\n' + description + '\n' + meta_data + "\n\n"
     return query
     
 

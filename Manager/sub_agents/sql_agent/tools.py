@@ -2,13 +2,13 @@ from google.adk.tools import ToolContext
 from .sql_gen import text_to_sql
 from google.cloud import bigquery as bq
 import pandas as pd
-
+import os
 
 
 APP_NAME = "TEST_APP"
 SESSION_ID = "123321"
 USER_ID = "TEST_USER"
-PROJECT_ID= None ### project id 
+PROJECT_ID= os.environ.get("DATABASE_ID")
 
 
 async def dry_run_check(query:str)->bool:

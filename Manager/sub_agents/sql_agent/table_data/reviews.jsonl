@@ -1,0 +1,5 @@
+{"review_id":"REV001","product_id":"P001","customer_id":"C001","rating":5,"review_text":"Excellent phone"}
+{"review_id":"REV002","product_id":"P005","customer_id":"C004","rating":3,"review_text":"Average quality"}
+{"review_id":"REV003","product_id":"P007","customer_id":"C005","rating":2,"review_text":"Stopped working"}
+{"review_id":"REV004","product_id":"P010","customer_id":"C008","rating":4,"review_text":"Good value"}
+{"review_id":"REV005","product_id":"P013","customer_id":"C011","rating":1,"review_text":"Very uncomfortable"}

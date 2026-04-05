@@ -34,9 +34,10 @@ GOOGLE_GENAI_USE_VERTEXAI="True"
 GOOGLE_CLOUD_PROJECT="<project-name>"
 GOOGLE_CLOUD_LOCATION="<location>"
 ```
-*NOTE*- This file should be placed along with agent.py file, even in sub agents. Also it is needed to setup the client which calls the llm, present in SharedResouces/load_environment.py
-*   **Installation:** Used google-adk and adhered to standard folder structure as per google ADK's document
 
+Setup the os environment in SharedResources/load_environment.py
+*NOTE*- This file should be placed along with agent.py file, even in sub agents. Also it is needed to setup the client which calls the llm, present in SharedResouces/load_environment.py
+*   **Installation:** Used google-adk and adhered to standard folder structure as per google ADK's document (this project uses ADC auth for calling models, read the documentation for api bases access)
 **Frontend tech Stack**: React + tailwindcss + Vite
 **Backend Tech Stack**: FastAPI + Uvicorn + google-adk
 

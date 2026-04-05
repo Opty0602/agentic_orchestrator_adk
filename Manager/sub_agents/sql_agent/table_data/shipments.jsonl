@@ -1,0 +1,15 @@
+{"shipment_id":"S001","order_id":"O001","shipment_status":"delivered","shipped_date":"2024-03-02","delivered_date":"2024-03-05","carrier":"Delhivery"}
+{"shipment_id":"S002","order_id":"O002","shipment_status":"in_transit","shipped_date":"2024-03-03","delivered_date":null,"carrier":"BlueDart"}
+{"shipment_id":"S003","order_id":"O003","shipment_status":"delivered","shipped_date":"2024-03-04","delivered_date":"2024-03-07","carrier":"Amazon Logistics"}
+{"shipment_id":"S004","order_id":"O004","shipment_status":"cancelled","shipped_date":null,"delivered_date":null,"carrier":"NA"}
+{"shipment_id":"S005","order_id":"O005","shipment_status":"delivered","shipped_date":"2024-03-06","delivered_date":"2024-03-09","carrier":"Delhivery"}
+{"shipment_id":"S006","order_id":"O006","shipment_status":"delivered","shipped_date":"2024-03-07","delivered_date":"2024-03-08","carrier":"BlueDart"}
+{"shipment_id":"S007","order_id":"O007","shipment_status":"shipped","shipped_date":"2024-03-08","delivered_date":null,"carrier":"Ecom Express"}
+{"shipment_id":"S008","order_id":"O008","shipment_status":"delivered","shipped_date":"2024-03-09","delivered_date":"2024-03-10","carrier":"Amazon Logistics"}
+{"shipment_id":"S009","order_id":"O009","shipment_status":"delivered","shipped_date":"2024-03-10","delivered_date":"2024-03-12","carrier":"Delhivery"}
+{"shipment_id":"S010","order_id":"O010","shipment_status":"delivered","shipped_date":"2024-03-11","delivered_date":"2024-03-13","carrier":"BlueDart"}
+{"shipment_id":"S011","order_id":"O011","shipment_status":"delivered","shipped_date":"2024-03-12","delivered_date":"2024-03-15","carrier":"Ecom Express"}
+{"shipment_id":"S012","order_id":"O012","shipment_status":"in_transit","shipped_date":"2024-03-13","delivered_date":null,"carrier":"Delhivery"}
+{"shipment_id":"S013","order_id":"O013","shipment_status":"delivered","shipped_date":"2024-03-14","delivered_date":"2024-03-16","carrier":"Amazon Logistics"}
+{"shipment_id":"S014","order_id":"O014","shipment_status":"delivered","shipped_date":"2024-03-15","delivered_date":"2024-03-17","carrier":"BlueDart"}
+{"shipment_id":"S015","order_id":"O015","shipment_status":"delivered","shipped_date":"2024-03-16","delivered_date":"2024-03-18","carrier":"Delhivery"}

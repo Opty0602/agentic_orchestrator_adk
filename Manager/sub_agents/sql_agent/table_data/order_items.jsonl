@@ -1,0 +1,15 @@
+{"order_item_id":"OI001","order_id":"O001","product_id":"P001","quantity":1,"price_per_unit":80000}
+{"order_item_id":"OI002","order_id":"O002","product_id":"P002","quantity":1,"price_per_unit":75000}
+{"order_item_id":"OI003","order_id":"O003","product_id":"P003","quantity":1,"price_per_unit":120000}
+{"order_item_id":"OI004","order_id":"O004","product_id":"P005","quantity":1,"price_per_unit":7000}
+{"order_item_id":"OI005","order_id":"O005","product_id":"P007","quantity":1,"price_per_unit":15000}
+{"order_item_id":"OI006","order_id":"O006","product_id":"P008","quantity":1,"price_per_unit":8000}
+{"order_item_id":"OI007","order_id":"O007","product_id":"P009","quantity":1,"price_per_unit":12000}
+{"order_item_id":"OI008","order_id":"O008","product_id":"P010","quantity":1,"price_per_unit":5000}
+{"order_item_id":"OI009","order_id":"O009","product_id":"P011","quantity":1,"price_per_unit":2500}
+{"order_item_id":"OI010","order_id":"O010","product_id":"P012","quantity":1,"price_per_unit":6000}
+{"order_item_id":"OI011","order_id":"O011","product_id":"P013","quantity":1,"price_per_unit":9000}
+{"order_item_id":"OI012","order_id":"O012","product_id":"P014","quantity":1,"price_per_unit":12000}
+{"order_item_id":"OI013","order_id":"O013","product_id":"P015","quantity":1,"price_per_unit":15000}
+{"order_item_id":"OI014","order_id":"O014","product_id":"P008","quantity":1,"price_per_unit":8000}
+{"order_item_id":"OI015","order_id":"O015","product_id":"P007","quantity":1,"price_per_unit":15000}

@@ -1,0 +1,5 @@
+{"inventory_id":"I001","product_id":"P001","warehouse_id":"W001","stock_quantity":50}
+{"inventory_id":"I002","product_id":"P002","warehouse_id":"W002","stock_quantity":40}
+{"inventory_id":"I003","product_id":"P003","warehouse_id":"W003","stock_quantity":30}
+{"inventory_id":"I004","product_id":"P005","warehouse_id":"W001","stock_quantity":100}
+{"inventory_id":"I005","product_id":"P007","warehouse_id":"W002","stock_quantity":60}

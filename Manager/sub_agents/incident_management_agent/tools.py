@@ -13,7 +13,7 @@ APP_NAME = "TEST_APP"
 SESSION_ID = "123321"
 USER_ID = "TEST_USER"
 CHROMA_COLLECTION = "incident_embeddingsv2_ss"
-CHROMA_PERSIST_PATH = "./Manager/sub_agents/incident_management_agent/chromad_new"
+CHROMA_PERSIST_PATH = "./Manager/sub_agents/incident_management_agent/chromadb"
 
 async def session_create(session_service, app_name,user_id, session_id, state):
         await session_service.create_session(
@@ -67,7 +67,7 @@ Issue occured: {_clean(description)}
     response = client.models.embed_content(
         model=model_id,
         contents=contents,
-        config=types.EmbedContentConfig(task_type="SEMANTIC_SIMILARITY"),
+        config=types.EmbedContentConfig(task_type="SEMANTIC_SIMILARITY",output_dimensionality=768),
     )
 
     # normalize to list[float]
@@ -132,7 +132,7 @@ Issue occured: {_clean(description)}
 
 
 
-def get_relevant_passage(user_query, collection_name, n_results=5, model_id: str = "gemini-embedding-001"):
+def get_relevant_passage(user_query, collection_name, n_results=5, model_id: str = "text-embedding-005"):
 
     collection = chroma_client.get_collection(collection_name)
     text_embedding = client.models.embed_content(
@@ -153,7 +153,7 @@ def get_relevant_passage(user_query, collection_name, n_results=5, model_id: str
 def get_historical_incident(query: str, n_results: int = 5):
     '''Fetches the most similar historical incident based on the user's incident query.'''
 
-    model_id: str = "gemini-embedding-001"
+    model_id: str = "text-embedding-005"
 
     collection_name = "incident_embeddingsv2_ss"
     print(f"\n{'='*80}")

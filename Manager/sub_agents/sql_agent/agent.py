@@ -123,10 +123,10 @@ Else:
 
 ```json
 {
-  "result": "Fail",
+  "result": "Fail" | "Pass",
   "feedback": "<one line feedback>",
-  "user_query": {s_user_query},
-  "confidence_threshold": {s_threshold_confidence},
+  "user_query": `s_user_query`,
+  "confidence_threshold": `s_threshold_confidence`,
   "confidence_score": "<provide solution's confidence score>"
 }
 ```

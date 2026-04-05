@@ -1,0 +1,257 @@
+Incident ID,Application ID,Incident Creation Timestamp,Resolution Timestamp,Incident Title,Incident Description,Root Cause,Resolution,Severity
+INC6001,AUTH-SVC,2025-03-21 09:00:00,2025-03-21 10:10:00,Auth latency spike,Authentication requests experiencing high latency under load,Thread contention due to synchronous DB calls,"1. Inspect thread dump for blocked threads
+2. Identify synchronous DB calls
+3. Convert blocking calls to async
+4. Optimize DB queries
+5. Deploy fix and monitor latency",High
+INC6002,AUTH-SVC,2025-03-21 09:15:00,2025-03-21 10:45:00,Token validation errors,Users unable to login due to token rejection,Token signature mismatch across services,"1. Compare signing keys across services
+2. Validate key rotation timeline
+3. Synchronize keys
+4. Restart services gracefully
+5. Verify login success rate",High
+INC6003,API-GW,2025-03-21 10:00:00,2025-03-21 11:20:00,API timeout surge,Multiple APIs timing out intermittently,Circuit breaker misconfigured causing early trips,"1. Review circuit breaker thresholds
+2. Check downstream latency metrics
+3. Adjust failure thresholds
+4. Reset breaker state
+5. Monitor recovery",High
+INC6004,API-GW,2025-03-21 10:10:00,2025-03-21 11:00:00,Gateway routing failure,Requests not reaching backend services,Service registry inconsistency,"1. Validate service registry entries
+2. Check heartbeat failures
+3. Refresh registry cache
+4. Restart gateway nodes
+5. Verify routing",High
+INC6005,PAY-UPI,2025-03-21 11:00:00,2025-03-21 13:10:00,UPI transaction delay,Transactions taking longer to complete,Kafka backlog delaying event processing,"1. Check consumer lag
+2. Identify slow partitions
+3. Scale consumers
+4. Reprocess backlog
+5. Monitor throughput",High
+INC6006,PAY-UPI,2025-03-21 11:10:00,2025-03-21 12:30:00,Payment failure spike,High rate of transaction failures,PSP endpoint latency spike,"1. Monitor PSP response time
+2. Enable retry with backoff
+3. Route traffic to secondary PSP
+4. Validate success rate",High
+INC6007,DB-CORE,2025-03-21 12:00:00,2025-03-21 14:00:00,Slow query degradation,Database queries slowing down progressively,Index fragmentation,"1. Analyze query plans
+2. Rebuild fragmented indexes
+3. Optimize query paths
+4. Monitor execution time",High
+INC6008,DB-CORE,2025-03-21 12:15:00,2025-03-21 13:40:00,Connection pool starvation,Applications unable to get DB connections,Improper pool sizing under load,"1. Inspect pool usage metrics
+2. Increase pool size
+3. Identify connection leaks
+4. Patch service
+5. Validate availability",High
+INC6009,CACHE-REDIS,2025-03-21 13:00:00,2025-03-21 14:10:00,Cache eviction spike,Frequent cache evictions causing latency,Memory pressure in Redis cluster,"1. Check memory utilization
+2. Adjust maxmemory policy
+3. Increase node capacity
+4. Monitor hit ratio",Medium
+INC6010,CACHE-REDIS,2025-03-21 13:10:00,2025-03-21 14:30:00,Cache stampede effect,DB overload due to simultaneous cache misses,Synchronized TTL expiry,"1. Identify hot keys
+2. Randomize TTL values
+3. Implement request coalescing
+4. Add cache warming strategy",High
+INC6011,QUEUE-KAFKA,2025-03-21 14:00:00,2025-03-21 16:30:00,Consumer lag accumulation,Event processing delayed,Uneven partition distribution,"1. Check partition assignment
+2. Rebalance partitions
+3. Scale consumer instances
+4. Monitor lag metrics",High
+INC6012,QUEUE-KAFKA,2025-03-21 14:10:00,2025-03-21 15:45:00,Offset commit failures,Consumers reprocessing messages,Offset commit errors,"1. Inspect commit logs
+2. Fix commit logic
+3. Reset offsets
+4. Validate idempotency",High
+INC6013,NOTIF-SVC,2025-03-21 15:00:00,2025-03-21 16:00:00,OTP delivery failure,Users not receiving OTP,SMS provider TLS issue,"1. Check TLS handshake logs
+2. Update certificates
+3. Restart gateway
+4. Validate OTP delivery",High
+INC6014,NOTIF-SVC,2025-03-21 15:10:00,2025-03-21 16:40:00,Notification delay,Delayed push notifications,Queue backlog,"1. Inspect queue depth
+2. Scale workers
+3. Optimize batching
+4. Monitor latency",Medium
+INC6015,CARD-SVC,2025-03-21 16:00:00,2025-03-21 17:10:00,Card transaction rejection,POS payments failing,Fraud model latency spike,"1. Analyze fraud service latency
+2. Add caching layer
+3. Optimize scoring logic
+4. Monitor approvals",High
+INC6016,CARD-SVC,2025-03-21 16:15:00,2025-03-21 17:45:00,Card network instability,Intermittent failures in card processing,Downstream network provider issues,"1. Check provider health
+2. Enable fallback routing
+3. Monitor transaction success
+4. Notify provider",High
+INC6017,SEC-AUTH,2025-03-21 17:00:00,2025-03-21 18:00:00,Session inconsistency,Users losing session state,Distributed cache inconsistency,"1. Inspect session store
+2. Centralize session management
+3. Sync cache nodes
+4. Validate session persistence",Medium
+INC6018,SEC-AUTH,2025-03-21 17:10:00,2025-03-21 18:20:00,Session expiry anomaly,Sessions expiring early,Incorrect TTL config,"1. Review TTL settings
+2. Adjust expiry values
+3. Redeploy auth service
+4. Monitor session duration",Low
+INC6019,ETL-SVC,2025-03-22 01:00:00,2025-03-22 04:30:00,ETL pipeline failure,Data pipeline not completing,Schema mismatch,"1. Validate schema mapping
+2. Update transformations
+3. Rerun failed jobs
+4. Verify data consistency",Medium
+INC6020,ETL-SVC,2025-03-22 01:15:00,2025-03-22 03:00:00,Data ingestion delay,Delayed analytics data,Upstream dependency lag,"1. Identify upstream delays
+2. Trigger manual ingestion
+3. Optimize ingestion pipeline
+4. Monitor freshness",Low
+INC6021,NET-INFRA,2025-03-22 08:00:00,2025-03-22 09:30:00,DNS resolution delay,Services unable to resolve endpoints,DNS cache poisoning,"1. Flush DNS cache
+2. Validate DNS entries
+3. Secure resolver configs
+4. Monitor resolution time",High
+INC6022,NET-INFRA,2025-03-22 08:10:00,2025-03-22 09:10:00,TLS handshake failure,Secure connections failing,Expired certificates,"1. Check certificate expiry
+2. Renew certificates
+3. Restart services
+4. Validate secure connections",High
+INC6023,API-SVC,2025-03-22 09:00:00,2025-03-22 10:20:00,Serialization errors,API responses malformed,Incorrect schema serialization,"1. Validate schema definitions
+2. Fix serialization logic
+3. Deploy updated service
+4. Test API responses",Medium
+INC6024,API-SVC,2025-03-22 09:15:00,2025-03-22 10:45:00,Deserialization failure,Requests failing on parsing,Version mismatch,"1. Compare schema versions
+2. Update parsing logic
+3. Deploy compatibility fix
+4. Validate requests",Medium
+INC6025,SEARCH-SVC,2025-03-22 10:00:00,2025-03-22 11:30:00,Search latency spike,Search queries slow,Index corruption,"1. Validate index health
+2. Rebuild index
+3. Optimize query execution
+4. Monitor latency",High
+INC6026,SEARCH-SVC,2025-03-22 10:10:00,2025-03-22 11:50:00,Search results missing,Incomplete search results,Index sync delay,"1. Check indexing pipeline
+2. Trigger reindexing
+3. Validate results
+4. Monitor consistency",Medium
+INC6027,FILE-SVC,2025-03-22 11:00:00,2025-03-22 12:20:00,File upload failure,Uploads failing intermittently,Storage service timeout,"1. Check storage latency
+2. Increase timeout limits
+3. Retry failed uploads
+4. Monitor success rate",Medium
+INC6028,FILE-SVC,2025-03-22 11:15:00,2025-03-22 12:45:00,File download delay,Slow file retrieval,Network bandwidth bottleneck,"1. Analyze network throughput
+2. Optimize transfer paths
+3. Scale bandwidth
+4. Monitor download time",Medium
+INC6029,SCHED-SVC,2025-03-22 12:00:00,2025-03-22 13:10:00,Job scheduling delay,Scheduled jobs not executing on time,Cron scheduler drift,"1. Validate scheduler timing
+2. Sync system clocks
+3. Restart scheduler
+4. Monitor execution",Low
+INC6030,SCHED-SVC,2025-03-22 12:10:00,2025-03-22 13:30:00,Job execution failure,Jobs failing intermittently,Dependency service failure,"1. Identify failed dependencies
+2. Restart services
+3. Retry jobs
+4. Validate completion",Medium
+INC6031,AUTH-SVC,2025-03-22 13:00:00,2025-03-22 14:30:00,Auth DB timeout,Login requests timing out,Slow DB joins,"1. Analyze query plans
+2. Optimize joins
+3. Add indexes
+4. Monitor latency",High
+INC6032,PAY-UPI,2025-03-22 13:15:00,2025-03-22 15:10:00,Duplicate transaction issue,Transactions processed twice,Idempotency failure,"1. Check transaction IDs
+2. Implement idempotency keys
+3. Deduplicate records
+4. Validate processing",Critical
+INC6033,API-GW,2025-03-22 14:00:00,2025-03-22 15:20:00,Rate limiting anomaly,Requests blocked incorrectly,Improper rate limit config,"1. Review rate limits
+2. Adjust thresholds
+3. Deploy config
+4. Monitor traffic",Medium
+INC6034,CACHE-REDIS,2025-03-22 14:10:00,2025-03-22 15:40:00,Hot key issue,Single key causing load imbalance,Skewed access pattern,"1. Identify hot key
+2. Shard key
+3. Distribute load
+4. Monitor performance",High
+INC6035,QUEUE-KAFKA,2025-03-22 15:00:00,2025-03-22 17:10:00,Producer throughput drop,Low message production rate,Network latency,"1. Measure network RTT
+2. Optimize producer config
+3. Increase batch size
+4. Monitor throughput",Medium
+INC6036,NOTIF-SVC,2025-03-22 15:15:00,2025-03-22 16:30:00,Push notification failure,Push notifications not delivered,Token invalidation,"1. Validate tokens
+2. Refresh tokens
+3. Retry notifications
+4. Monitor success",Medium
+INC6037,CARD-SVC,2025-03-22 16:00:00,2025-03-22 17:20:00,Card auth failure,Authorization failing intermittently,Issuer bank timeout,"1. Check issuer latency
+2. Retry authorization
+3. Enable fallback
+4. Monitor success",High
+INC6038,SEC-AUTH,2025-03-22 16:15:00,2025-03-22 17:45:00,Token refresh failure,Refresh tokens failing,Expired refresh tokens,"1. Validate token expiry
+2. Update refresh logic
+3. Reissue tokens
+4. Monitor success",Medium
+INC6039,ETL-SVC,2025-03-23 01:00:00,2025-03-23 03:30:00,Data duplication in reports,Duplicate entries observed,ETL retry logic flaw,"1. Inspect retry logic
+2. Implement idempotent writes
+3. Clean duplicate data
+4. Validate reports",Medium
+INC6040,NET-INFRA,2025-03-23 08:00:00,2025-03-23 09:20:00,Packet loss spike,Network instability detected,Router misconfiguration,"1. Check router configs
+2. Fix routing rules
+3. Restart network devices
+4. Monitor packet loss",High
+INC6041,API-SVC,2025-03-23 09:00:00,2025-03-23 10:30:00,Memory leak in service,Service crashes under load,Unreleased objects,"1. Analyze heap dump
+2. Identify leak
+3. Fix code
+4. Redeploy service
+5. Monitor memory",High
+INC6042,SEARCH-SVC,2025-03-23 10:00:00,2025-03-23 11:40:00,Search timeout issue,Queries timing out,Slow shard response,"1. Identify slow shards
+2. Rebalance shards
+3. Optimize queries
+4. Monitor latency",High
+INC6043,FILE-SVC,2025-03-23 11:00:00,2025-03-23 12:30:00,File corruption issue,Downloaded files corrupted,Checksum mismatch,"1. Validate checksums
+2. Fix storage layer
+3. Re-upload files
+4. Monitor integrity",Medium
+INC6044,SCHED-SVC,2025-03-23 12:00:00,2025-03-23 13:20:00,Missed scheduled jobs,Jobs not triggered,Clock drift,"1. Sync system time
+2. Restart scheduler
+3. Validate job execution
+4. Monitor schedule",Low
+INC6045,AUTH-SVC,2025-03-23 13:00:00,2025-03-23 14:40:00,Auth cache inconsistency,Inconsistent login results,Cache invalidation issue,"1. Inspect cache invalidation
+2. Fix logic
+3. Clear stale entries
+4. Monitor login consistency",Medium
+INC6046,PAY-UPI,2025-03-23 13:15:00,2025-03-23 15:20:00,Reconciliation mismatch,Ledger mismatch detected,Partial transaction processing,"1. Compare debit/credit logs
+2. Reconcile missing entries
+3. Fix processing pipeline
+4. Validate ledger",Critical
+INC6047,API-GW,2025-03-23 14:00:00,2025-03-23 15:30:00,Header parsing error,Requests failing at gateway,Malformed headers,"1. Inspect request headers
+2. Fix parsing logic
+3. Deploy fix
+4. Validate requests",Medium
+INC6048,CACHE-REDIS,2025-03-23 14:10:00,2025-03-23 15:50:00,Cache sync issue,Inconsistent cache data,Replication lag,"1. Check replication status
+2. Sync replicas
+3. Validate data consistency
+4. Monitor cache",Medium
+INC6049,QUEUE-KAFKA,2025-03-23 15:00:00,2025-03-23 17:30:00,Message duplication,Duplicate events observed,Producer retries without idempotency,"1. Enable idempotent producer
+2. Deduplicate messages
+3. Validate processing
+4. Monitor system",High
+INC6050,NOTIF-SVC,2025-03-23 15:15:00,2025-03-23 16:40:00,Email notification failure,Emails not sent,SMTP server downtime,"1. Check SMTP health
+2. Restart server
+3. Retry emails
+4. Monitor delivery",Medium
+INC6051,CARD-SVC,2025-03-23 16:00:00,2025-03-23 17:25:00,Settlement delay,Delayed settlement processing,Batch job delay,"1. Inspect batch logs
+2. Fix job timing
+3. Re-run settlement
+4. Validate completion",High
+INC6052,SEC-AUTH,2025-03-23 16:15:00,2025-03-23 17:50:00,Permission mismatch,Users accessing restricted data,Role misconfiguration,"1. Review roles
+2. Fix permissions
+3. Deploy changes
+4. Validate access",Critical
+INC6053,ETL-SVC,2025-03-24 01:00:00,2025-03-24 03:40:00,Data skew issue,Uneven data distribution,Partitioning flaw,"1. Analyze partitions
+2. Repartition data
+3. Optimize pipeline
+4. Monitor distribution",Medium
+INC6054,NET-INFRA,2025-03-24 08:00:00,2025-03-24 09:30:00,Firewall block issue,Requests blocked unexpectedly,Firewall rule misconfiguration,"1. Review firewall rules
+2. Correct policies
+3. Apply changes
+4. Monitor traffic",High
+INC6055,API-SVC,2025-03-24 09:00:00,2025-03-24 10:20:00,Thread leak issue,Threads increasing over time,Improper thread handling,"1. Inspect thread dump
+2. Fix thread lifecycle
+3. Deploy patch
+4. Monitor threads",High
+INC6056,SEARCH-SVC,2025-03-24 10:00:00,2025-03-24 11:30:00,Search ranking issue,Incorrect ranking results,Algorithm misconfiguration,"1. Review ranking config
+2. Adjust weights
+3. Deploy changes
+4. Validate ranking",Low
+INC6057,FILE-SVC,2025-03-24 11:00:00,2025-03-24 12:40:00,Storage quota exceeded,Uploads failing,Disk full,"1. Check disk usage
+2. Free space
+3. Increase quota
+4. Monitor storage",Medium
+INC6058,SCHED-SVC,2025-03-24 12:00:00,2025-03-24 13:20:00,Job duplication,Jobs running multiple times,Retry misconfiguration,"1. Inspect retry logic
+2. Fix config
+3. Deduplicate jobs
+4. Monitor execution",Medium
+INC6059,AUTH-SVC,2025-03-24 13:00:00,2025-03-24 14:50:00,Auth service crash,Service restarting frequently,Memory exhaustion,"1. Analyze heap
+2. Fix leak
+3. Increase memory
+4. Restart service
+5. Monitor stability",Critical
+INC6060,PAY-UPI,2025-03-24 13:15:00,2025-03-24 15:30:00,UPI timeout issue,Transactions timing out,Network latency spike,"1. Measure network latency
+2. Optimize routing
+3. Retry transactions
+4. Monitor success",High
+INC6061,API-GW,2025-03-24 14:00:00,2025-03-24 15:40:00,Gateway auth failure,Requests rejected at gateway,Auth service dependency failure,"1. Check auth dependency
+2. Restart service
+3. Validate tokens
+4. Monitor gateway",High
+INC6062,CACHE-REDIS,2025-03-24 14:10:00,2025-03-24 15:50:00,Cache cold start issue,High latency after restart,Cache not warmed,"1. Identify critical keys
+2. Preload cache
+3. Monitor hit ratio
+4. Optimize warming",Medium

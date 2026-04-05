@@ -1,0 +1,15 @@
+{"product_id":"P001","name":"iPhone 14","category_id":"CAT01","price":80000,"is_active":true}
+{"product_id":"P002","name":"Samsung S23","category_id":"CAT01","price":75000,"is_active":true}
+{"product_id":"P003","name":"MacBook Air","category_id":"CAT02","price":120000,"is_active":true}
+{"product_id":"P004","name":"Dell XPS","category_id":"CAT02","price":110000,"is_active":true}
+{"product_id":"P005","name":"Nike Shoes","category_id":"CAT03","price":7000,"is_active":true}
+{"product_id":"P006","name":"Adidas Shoes","category_id":"CAT03","price":6500,"is_active":true}
+{"product_id":"P007","name":"Sony Headphones","category_id":"CAT04","price":15000,"is_active":true}
+{"product_id":"P008","name":"JBL Speaker","category_id":"CAT04","price":8000,"is_active":true}
+{"product_id":"P009","name":"Smart Watch","category_id":"CAT05","price":12000,"is_active":true}
+{"product_id":"P010","name":"Fitness Band","category_id":"CAT05","price":5000,"is_active":true}
+{"product_id":"P011","name":"Gaming Mouse","category_id":"CAT06","price":2500,"is_active":true}
+{"product_id":"P012","name":"Mechanical Keyboard","category_id":"CAT06","price":6000,"is_active":true}
+{"product_id":"P013","name":"Office Chair","category_id":"CAT07","price":9000,"is_active":true}
+{"product_id":"P014","name":"Study Table","category_id":"CAT07","price":12000,"is_active":true}
+{"product_id":"P015","name":"LED Monitor","category_id":"CAT06","price":15000,"is_active":true}

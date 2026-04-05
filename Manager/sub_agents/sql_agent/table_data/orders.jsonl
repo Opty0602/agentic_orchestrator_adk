@@ -1,0 +1,15 @@
+{"order_id":"O001","customer_id":"C001","order_date":"2024-03-01","order_status":"delivered","total_amount":80000}
+{"order_id":"O002","customer_id":"C002","order_date":"2024-03-02","order_status":"shipped","total_amount":75000}
+{"order_id":"O003","customer_id":"C003","order_date":"2024-03-03","order_status":"delivered","total_amount":120000}
+{"order_id":"O004","customer_id":"C004","order_date":"2024-03-04","order_status":"cancelled","total_amount":7000}
+{"order_id":"O005","customer_id":"C005","order_date":"2024-03-05","order_status":"delivered","total_amount":15000}
+{"order_id":"O006","customer_id":"C006","order_date":"2024-03-06","order_status":"delivered","total_amount":8000}
+{"order_id":"O007","customer_id":"C007","order_date":"2024-03-07","order_status":"shipped","total_amount":12000}
+{"order_id":"O008","customer_id":"C008","order_date":"2024-03-08","order_status":"delivered","total_amount":5000}
+{"order_id":"O009","customer_id":"C009","order_date":"2024-03-09","order_status":"delivered","total_amount":2500}
+{"order_id":"O010","customer_id":"C010","order_date":"2024-03-10","order_status":"delivered","total_amount":6000}
+{"order_id":"O011","customer_id":"C011","order_date":"2024-03-11","order_status":"delivered","total_amount":9000}
+{"order_id":"O012","customer_id":"C012","order_date":"2024-03-12","order_status":"shipped","total_amount":12000}
+{"order_id":"O013","customer_id":"C013","order_date":"2024-03-13","order_status":"delivered","total_amount":15000}
+{"order_id":"O014","customer_id":"C014","order_date":"2024-03-14","order_status":"delivered","total_amount":8000}
+{"order_id":"O015","customer_id":"C015","order_date":"2024-03-15","order_status":"delivered","total_amount":15000}

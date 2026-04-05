@@ -119,7 +119,7 @@ instruction = SOLUTION_GENERATOR_PROMPT_v1,
 
 validator_agent = Agent(
     name="validator_agent",
-    model="gemini-2.0-flash",
+    model="gemini-2.5-flash",
     include_contents="none",
     instruction='''
 
@@ -250,7 +250,7 @@ Return output in format:
 
 intent_agent = Agent(
      name= "intent_agent",
-     model="gemini-2.0-flash",
+     model="gemini-2.5-flash",
      disallow_transfer_to_parent=True,
      disallow_transfer_to_peers=True,
      after_agent_callback=intent_after_agent_callback,

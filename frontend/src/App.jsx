@@ -3,7 +3,7 @@ import { Database, MessageSquare } from "lucide-react";
 import ChatBox from "./components/ChatBox";
 import SQLOutputPanel from "./components/SQLOutputPanel";
 import IncidentOutputPanel from "./components/IncidentOutputPanel";
-import logo from "./SymbioseAI1.png";
+import logo from "./components/logo.png";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState("sql");
@@ -109,10 +109,10 @@ const App = () => {
         <div className="flex items-center space-x-4">
           <img
             src={logo}
-            alt="SymbioseAI Logo"
+            alt="logo"
             className="w-10 h-10 rounded-full object-cover"
           />
-          <h1 className="text-2xl font-bold text-purple-400">SymbioseAI Lab</h1>
+          <h1 className="text-2xl font-bold text-purple-400">Agentic Orchestrator</h1>
         </div>
         <div className="flex space-x-2 bg-gray-800 rounded-lg p-1">
           <button

@@ -1,0 +1,3 @@
+{"return_id":"R001","order_item_id":"OI005","return_reason":"Defective product","return_status":"approved","refund_amount":15000}
+{"return_id":"R002","order_item_id":"OI008","return_reason":"Not satisfied","return_status":"pending","refund_amount":5000}
+{"return_id":"R003","order_item_id":"OI011","return_reason":"Damaged packaging","return_status":"approved","refund_amount":9000}

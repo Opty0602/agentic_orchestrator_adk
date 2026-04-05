@@ -1,5 +1,5 @@
 import asyncio, sys
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -10,10 +10,10 @@ from google.adk.runners import Runner
 from google.genai.types import Content, Part
 import uuid, json
 from logging import warning,info
-from typing import Optional
+from pprint import pp
 
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(dotenv_path=".env")
 
 # initial_state
 
@@ -180,10 +180,8 @@ async def chat_endpoint(req: ChatRequest):
 
         cleaned_final_texts = remove_duplicate_dicts(final_texts)             
         session_state = app.state.session_service.get_session_sync(app_name=APP_NAME,user_id=USER_ID,session_id=SESSION_ID).state
-        print({
+        pp({
             "success": True,
-            "responses": cleaned_final_texts or "*No response generated.*",
-            
             "session_state": session_state
         })
 

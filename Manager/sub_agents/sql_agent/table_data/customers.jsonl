@@ -1,0 +1,15 @@
+{"customer_id":"C001","name":"Aarav Mehta","email":"aarav@gmail.com","phone":"900000001","created_at":"2024-01-10 10:00:00","country":"India","city":"Mumbai","is_premium":true}
+{"customer_id":"C002","name":"Riya Sharma","email":"riya@gmail.com","phone":"900000002","created_at":"2024-02-15 11:30:00","country":"India","city":"Delhi","is_premium":false}
+{"customer_id":"C003","name":"Kabir Singh","email":"kabir@gmail.com","phone":"900000003","created_at":"2024-03-01 09:15:00","country":"India","city":"Bangalore","is_premium":true}
+{"customer_id":"C004","name":"Neha Verma","email":"neha@gmail.com","phone":"900000004","created_at":"2024-01-25 14:20:00","country":"India","city":"Pune","is_premium":false}
+{"customer_id":"C005","name":"Arjun Patel","email":"arjun@gmail.com","phone":"900000005","created_at":"2024-02-05 16:45:00","country":"India","city":"Ahmedabad","is_premium":true}
+{"customer_id":"C006","name":"Sara Khan","email":"sara@gmail.com","phone":"900000006","created_at":"2024-03-10 08:50:00","country":"India","city":"Hyderabad","is_premium":false}
+{"customer_id":"C007","name":"Dev Malhotra","email":"dev@gmail.com","phone":"900000007","created_at":"2024-02-28 19:10:00","country":"India","city":"Chandigarh","is_premium":true}
+{"customer_id":"C008","name":"Ananya Iyer","email":"ananya@gmail.com","phone":"900000008","created_at":"2024-03-12 12:00:00","country":"India","city":"Chennai","is_premium":false}
+{"customer_id":"C009","name":"Rahul Das","email":"rahul@gmail.com","phone":"900000009","created_at":"2024-01-18 17:30:00","country":"India","city":"Kolkata","is_premium":true}
+{"customer_id":"C010","name":"Priya Nair","email":"priya@gmail.com","phone":"900000010","created_at":"2024-03-20 10:25:00","country":"India","city":"Kochi","is_premium":false}
+{"customer_id":"C011","name":"Karan Joshi","email":"karan@gmail.com","phone":"900000011","created_at":"2024-02-11 15:40:00","country":"India","city":"Jaipur","is_premium":true}
+{"customer_id":"C012","name":"Sneha Reddy","email":"sneha@gmail.com","phone":"900000012","created_at":"2024-03-05 13:15:00","country":"India","city":"Hyderabad","is_premium":false}
+{"customer_id":"C013","name":"Vikram Rao","email":"vikram@gmail.com","phone":"900000013","created_at":"2024-01-30 09:00:00","country":"India","city":"Bangalore","is_premium":true}
+{"customer_id":"C014","name":"Pooja Kapoor","email":"pooja@gmail.com","phone":"900000014","created_at":"2024-02-20 18:10:00","country":"India","city":"Delhi","is_premium":false}
+{"customer_id":"C015","name":"Aditya Shah","email":"aditya@gmail.com","phone":"900000015","created_at":"2024-03-22 11:55:00","country":"India","city":"Mumbai","is_premium":true}
